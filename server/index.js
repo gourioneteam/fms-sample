@@ -25,17 +25,15 @@ app.use(cors({
 }));
 
 
-app.get('/',(req,res)=>{
-    res.send("welcome")
-})
-
 app.use("/api/auth", require("./src/routes/authRoutes"));  // Authentication Routes
 app.use("/api/admin", require("./src/routes/adminroute"));  // Admin Routes
 app.use("/api/student", require("./src/routes/studentroute"));  // student Routes
 app.use("/api/admin", require("./src/routes/batchallocationroutes"));//admin
 app.use("/api/trainer", require("./src/routes/trainerroutes"));//admin
 
-
+app.get('/',(req,res)=>{
+    res.send("welcome")
+})
 
 const PORT = process.env.PORT || 5000;
 
