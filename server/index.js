@@ -7,10 +7,6 @@ const cors = require("cors");
 
 connectDB();
 
-app.get('/',(req,res)=>{
-    res.send("welcome")
-})
-
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -28,6 +24,10 @@ app.use(cors({
     credentials: true,  // Allow cookies if needed
 }));
 
+
+app.get('/',(req,res)=>{
+    res.send("welcome")
+})
 
 app.use("/api/auth", require("./src/routes/authRoutes"));  // Authentication Routes
 app.use("/api/admin", require("./src/routes/adminroute"));  // Admin Routes
