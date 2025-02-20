@@ -24,9 +24,9 @@ app.use(cors({
     },
     credentials: true,  // Allow cookies if needed
 }));
-app.get('/',(req,res)=>{
-    res.send("welcome")
-})
+app.get("/api/test", (req, res) => {
+    res.json({ message: "API is working!" });
+  });
 
 app.use("/api/auth", require("./src/routes/authRoutes"));  // Authentication Routes
 app.use("/api/admin", require("./src/routes/adminroute"));  // Admin Routes
