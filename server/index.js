@@ -15,6 +15,18 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/uploads", express.static("uploads"));
+const allowedOrigins = ["http://localhost:5173", "https://fms-sample-fe.vercel.app/"];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,  // Allow cookies if needed
+}));
 
 
 app.use("/api/auth", require("./src/routes/authRoutes"));  // Authentication Routes
